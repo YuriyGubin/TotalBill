@@ -27,7 +27,8 @@ class MainViewController: UIViewController {
     }
     
     func setupViews() {
-        
+        view.backgroundColor = #colorLiteral(red: 0.9764705882, green: 0.9764705882, blue: 0.9764705882, alpha: 1)
+        view.addSubview(titleLabel)
     }
     
     
@@ -39,7 +40,8 @@ extension MainViewController {
     
     func setConstraints() {
         NSLayoutConstraint.activate([
-        
+            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         
         
         ])
