@@ -24,6 +24,19 @@ class MainViewController: UIViewController {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
+    
+    let descriptionLabel: UILabel = {
+       let label = UILabel()
+        label.text = "Enter the invoice amount and click \"Calculate\""
+        label.textColor = .black
+        label.font = UIFont(name: "Avenir Next Bold", size: 15)
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.7
+        label.numberOfLines = 2
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +51,7 @@ class MainViewController: UIViewController {
         
         view.addSubview(titleLabel)
         view.addSubview(logoImageView)
+        view.addSubview(descriptionLabel)
     }
     
     
@@ -56,6 +70,11 @@ extension MainViewController {
             logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             logoImageView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5),
             logoImageView.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5),
+            
+            descriptionLabel.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 15),
+            descriptionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            
         
         ])
     }
