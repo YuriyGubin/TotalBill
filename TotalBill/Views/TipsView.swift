@@ -37,10 +37,39 @@ class TipsView: UIView {
     }
     
     func setupView() {
+        translatesAutoresizingMaskIntoConstraints = false
         addSubview(titleLabel)
         addSubview(collectionView)
+        collectionView.register(TipsCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
     }
     
+    func setDelegates() {
+        collectionView.delegate = self
+        collectionView.dataSource = self
+    }
+}
+
+extension TipsView: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        4
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? TipsCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        return cell
+    }
+    
+    
+}
+
+extension TipsView: UICollectionViewDelegate {
+    
+}
+
+extension TipsView {
     func setConstraints() {
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 0),
